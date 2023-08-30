@@ -3,17 +3,27 @@
 
 BATCH_SIZE = 4
 # model_name = 't5-base'
-model_name = "/home/grads/r/rohan.chaudhury/Disfluency/models/tabl1_CL_best/checkpoint-2253"
+model_name = "/home/grads/r/rohan.chaudhury/Disfluency/models/checkpoint-2253"
 print ("Model name: ", model_name)
+
+output_csv_path= "."
+input_texts_path = "/home/grads/r/rohan.chaudhury/Disfluency/formatted_text/final_sw_whole/train/disfluent.txt"
+output_texts_path = "/home/grads/r/rohan.chaudhury/Disfluency/formatted_text/final_sw_whole/train/fluent.txt"
+test_input_texts_path = "/home/grads/r/rohan.chaudhury/Disfluency/formatted_text/final_sw_whole/train/fluent.txt"
 import os
 os.environ["WANDB_DISABLED"] = "true"
-os.environ["CUDA_VISIBLE_DEVICES"] = "3,2" 
+os.environ["CUDA_VISIBLE_DEVICES"] = "3,2,1,0" 
 
-NUM_GPU=2
-SEQUENCE_LENGTH = 300
+NUM_GPU=4
+SEQUENCE_LENGTH = 512
 # In[3]:
 import csv
 print ("Model name: ", model_name)
+import torch_optimizer as optim
+
+from tqdm import tqdm
+
+from nltk.tokenize import TreebankWordTokenizer
 
 import pickle
 import numpy as np
@@ -36,9 +46,6 @@ import evaluate
 # In[4]:
 
 
-input_texts_path = "/home/grads/r/rohan.chaudhury/Disfluency/formatted_text/brown_small/train/disfluent.txt"
-output_texts_path = "/home/grads/r/rohan.chaudhury/Disfluency/formatted_text/brown_small/train/fluent.txt"
-test_input_texts_path = "/home/grads/r/rohan.chaudhury/Disfluency/formatted_text/brown_small/train/fluent.txt"
 print ("Input texts path: ", input_texts_path)
 print ("Output texts path: ", output_texts_path)
 
@@ -72,7 +79,7 @@ print(len(test_input_texts))
 
 for i in range(len(all_texts)):
     lengths.append(len(all_texts[i]))
-# print(all_texts[np.argmax(lengths)])
+
 print ("Max length: ", max(lengths))
 
 length_words=[]
@@ -88,37 +95,12 @@ print("Max length in words: ", max(length_words))
 
 tokenizer = T5Tokenizer.from_pretrained(model_name, model_max_length=SEQUENCE_LENGTH)
 
-# new_tokens = all_words
-# # new_tokens.extend(['<pad>'])
-# # check if the tokens are already in the vocabulary
-# new_tokens = set(new_tokens) - set(tokenizer.vocab.keys())
 
-# print(len(list(new_tokens)))
-# # add the tokens to the tokenizer vocabulary
-# tokenizer.add_tokens(list(new_tokens))
-
-
-# In[8]:
-
-
-# add new, random embeddings for the new tokens
 
 config = T5Config.from_pretrained(model_name)
 config.model_max_length = SEQUENCE_LENGTH
 
 model = T5ForConditionalGeneration.from_pretrained(model_name, config=config)
-
-
-train_inputs, temp_inputs, train_outputs, temp_outputs = train_test_split(input_texts, output_texts, shuffle=True,  test_size=0.3, random_state=42)
-val_inputs, test_inputs, val_outputs, test_outputs = train_test_split(temp_inputs, temp_outputs,  shuffle=True, test_size=0.5, random_state=42)
-
-# def add_to_input_texts(input_texts):
-#     input_texts = ["Remove text disfluency: " + text for text in input_texts]
-#     return input_texts
-
-# def add_to_output_texts(input_texts):
-#     # input_texts = ["Corrected Text: " + text for text in input_texts]
-#     return input_texts
 
 def add_to_input_texts(input_texts):
     input_texts = ["Remove text disfluency: " + text.strip() + " [END]" for text in input_texts]
@@ -135,168 +117,20 @@ def remove_from_texts(input_texts):
     input_texts = [text.replace("[END]", "").strip() for text in input_texts]
     return input_texts
 
-train_inputs = add_to_input_texts(train_inputs)
-val_inputs= add_to_input_texts(val_inputs)
+
+test_inputs = input_texts
+test_outputs = output_texts
+
 test_inputs = add_to_input_texts(test_inputs)
 
-train_outputs = add_to_output_texts(train_outputs)
-val_outputs = add_to_output_texts(val_outputs)
 
-print(train_inputs[0])
-print(train_outputs[0])
-print(val_inputs[0])
-print(val_outputs[0])
+print ("Number of test inputs: ", len(test_inputs))
+print ("Number of test outputs: ", len(test_outputs))
+print ("First test input: ", test_inputs[0])
+print ("First test output: ", test_outputs[0])
+print ("Last test input: ", test_inputs[-1])
+print ("Last test output: ", test_outputs[-1])Z
 
-
-
-from torch.utils.data import Dataset
-
-class TranslationDataset(Dataset):
-    def __init__(self, tokenizer, inputs, outputs, max_length=SEQUENCE_LENGTH):
-        self.tokenizer = tokenizer
-        self.inputs = inputs
-        self.outputs = outputs
-        self.max_length = max_length
-
-    def __getitem__(self, idx):
-        input_text = self.inputs[idx]
-        output_text = self.outputs[idx]
-
-        input_tokenized = self.tokenizer(input_text, max_length=self.max_length, padding="max_length", truncation=True, return_tensors="pt")
-        output_tokenized = self.tokenizer(output_text, max_length=self.max_length, padding="max_length", truncation=True, return_tensors="pt")
-
-        return {
-            "input_ids": input_tokenized["input_ids"].squeeze(),
-            "attention_mask": input_tokenized["attention_mask"].squeeze(),
-            "labels": output_tokenized["input_ids"].squeeze(),
-        }
-
-    def __len__(self):
-        return len(self.inputs)
-
-train_dataset = TranslationDataset(tokenizer, train_inputs, train_outputs)
-val_dataset = TranslationDataset(tokenizer, val_inputs, val_outputs)
-
-
-# In[12]:
-
-
-from typing import Dict, List
-from transformers.tokenization_utils_base import PreTrainedTokenizerBase
-from transformers.file_utils import PaddingStrategy
-import torch
-class CustomDataCollator(DataCollatorForSeq2Seq):
-    def __init__(
-        self,
-        tokenizer: PreTrainedTokenizerBase,
-        padding: PaddingStrategy = True,
-        max_length: int = None,
-        pad_to_multiple_of: int = None,
-        model: T5ForConditionalGeneration = None,
-    ):
-        super().__init__(
-            tokenizer=tokenizer,
-            padding=padding,
-            max_length=max_length,
-            pad_to_multiple_of=pad_to_multiple_of,
-        )
-
-    def __call__(self, features: List[Dict[str, List[int]]]) -> Dict[str, torch.Tensor]:
-        labels = [feature["labels"] for feature in features]
-        input_ids = [feature["input_ids"] for feature in features]
-
-        input_ids = self.tokenizer.pad(
-            {"input_ids": input_ids},
-            padding=self.padding,
-            max_length=self.max_length,
-            pad_to_multiple_of=self.pad_to_multiple_of,
-            return_tensors="pt",
-        )
-        labels = self.tokenizer.pad(
-            {"input_ids": labels},
-            padding=self.padding,
-            max_length=self.max_length,
-            pad_to_multiple_of=self.pad_to_multiple_of,
-            return_tensors="pt",
-        )
-
-        # Replace padding_token_id with -100 to ignore loss correctly
-        labels = labels["input_ids"].masked_fill(labels["input_ids"] == self.tokenizer.pad_token_id, -100)
-
-        return {"input_ids": input_ids["input_ids"], "labels": labels}
-
-data_collator = CustomDataCollator(tokenizer)
-
-
-# In[13]:
-
-
-early_stopping_callback = EarlyStoppingCallback(
-    early_stopping_patience=20,  
-    early_stopping_threshold=0.0 
-)
-
-
-training_args = Seq2SeqTrainingArguments(
-    output_dir="./results/t5baseNewwords/brown_small",
-    per_device_train_batch_size=BATCH_SIZE,
-    per_device_eval_batch_size=BATCH_SIZE,
-    num_train_epochs=800,
-    save_steps=500,
-    evaluation_strategy="epoch",
-    save_strategy="epoch",
-    save_total_limit = 5,
-    predict_with_generate=True,
-    gradient_accumulation_steps=16//(BATCH_SIZE*NUM_GPU),
-    load_best_model_at_end=True,
-    metric_for_best_model="loss",
-    seed=42,
-    learning_rate=3e-5,
-    weight_decay=0.001,
-    report_to="none"
-)
-
-import torch_optimizer as optim
-
-
-
-
-
-optimizer = AdamW(model.parameters(), lr=training_args.learning_rate, weight_decay=training_args.weight_decay)
-optimizer = optim.Lookahead(optimizer)
-
-
-# optimizer = AdamW
-
-
-
-# # optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
-# optimizer = Lookahead(optimizer)
-
-num_training_steps = len(train_dataset) * training_args.num_train_epochs // training_args.per_device_train_batch_size
-num_warmup_steps = int(num_training_steps * 0.1)  
-
-scheduler = get_cosine_schedule_with_warmup(
-    optimizer,
-    num_warmup_steps=num_warmup_steps,
-    num_training_steps=num_training_steps
-)
-
-# model = T5ForConditionalGeneration.from_pretrained(best_checkpoint)
-
-trainer = Seq2SeqTrainer(
-    model=model,
-    args=training_args,
-    train_dataset=train_dataset,
-    eval_dataset=val_dataset,
-    data_collator=data_collator,
-    tokenizer=tokenizer,
-    callbacks=[early_stopping_callback],
-    optimizers=(optimizer, scheduler) 
-)
-
-print ("Training started now whole brown new.")
-trainer.train()
 
 
 
@@ -340,7 +174,6 @@ def lcs(s1, s2):
 
 
 
-from nltk.tokenize import TreebankWordTokenizer
 
 def calculate_metrics(predicted_sentences, ground_truth_sentences, noisy_sentences):
     # Initialize counters
@@ -407,32 +240,6 @@ def calculate_metrics(predicted_sentences, ground_truth_sentences, noisy_sentenc
 
 
 
-import csv
-
-from tqdm import tqdm
-
-
-
-def lcs(s1, s2):
-    matrix = [["" for x in range(len(s2))] for x in range(len(s1))]
-    for i in range(len(s1)):
-        for j in range(len(s2)):
-            if s1[i] == s2[j]:
-                if i == 0 or j == 0:
-                    matrix[i][j] = s1[i]
-                else:
-                    matrix[i][j] = matrix[i-1][j-1] + ' ' + s1[i]
-            else:
-                matrix[i][j] = max(matrix[i-1][j], matrix[i][j-1], key=len)
-    try:
-        cs = matrix[-1][-1]
-    except IndexError:
-        cs = ""
-        print ("Error")
-        print (s1)
-        print (s2)
-    return cs
-
 def translate_inputs(model, tokenizer, test_inputs, batch_size):
     translated_texts = []
 
@@ -486,7 +293,7 @@ print ("Recall: ", recall)
 print ("F1: ", f1)
 
 # Write to CSV
-with open('translation_results_brown.csv', 'w', newline='', encoding='utf-8') as csvfile:
+with open(output_csv_path+"/"+'translation_results.csv', 'w', newline='', encoding='utf-8') as csvfile:
     fieldnames = ['input_text', 'translated_text', 'original_output_text']
     writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
 
