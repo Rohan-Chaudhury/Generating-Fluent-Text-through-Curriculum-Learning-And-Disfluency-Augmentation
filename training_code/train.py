@@ -2,20 +2,20 @@
 
 
 BATCH_SIZE = 4
-# model_name = 't5-base'
+
 model_name = "/home/grads/r/rohan.chaudhury/Disfluency/models/checkpoint-2253"
 print ("Model name: ", model_name)
 output_model_path= "./results/t5baseNewwords/final_Sw_whole_50"
 input_texts_path = "/home/grads/r/rohan.chaudhury/Disfluency/formatted_text/final_sw_whole/train/disfluent.txt"
 output_texts_path = "/home/grads/r/rohan.chaudhury/Disfluency/formatted_text/final_sw_whole/train/fluent.txt"
-test_input_texts_path = "/home/grads/r/rohan.chaudhury/Disfluency/formatted_text/final_sw_whole/train/fluent.txt"
+
 import os
 os.environ["WANDB_DISABLED"] = "true"
 os.environ["CUDA_VISIBLE_DEVICES"] = "3,2,1,0" 
 
 NUM_GPU=4
 SEQUENCE_LENGTH = 512
-# In[3]:
+
 import csv
 print ("Model name: ", model_name)
 import torch_optimizer as optim
@@ -34,44 +34,36 @@ from transformers import get_cosine_schedule_with_warmup
 from transformers import AdamW
 import torch
 
-# from rouge import Rouge 
 from sklearn.metrics import precision_score, recall_score, f1_score
 from nltk.tokenize import word_tokenize
 from tqdm import tqdm
 import evaluate
-# In[4]:
-
 
 print ("Input texts path: ", input_texts_path)
 print ("Output texts path: ", output_texts_path)
 
 
+# Data preparation
 input_texts = open(input_texts_path).read().split('\n')
 output_texts = open(output_texts_path).read().split('\n')
-test_input_texts = open(test_input_texts_path).read().split('\n')
 
 
-# In[5]:
 
-
-all_texts= input_texts + output_texts + test_input_texts
+all_texts= input_texts + output_texts
 all_words = []
 for i in all_texts:
     all_words.extend(i.split())
 
 all_words = list(set(all_words))
-# print(all_words)
+
 print(len(all_words))
 
-
-# In[6]:
 
 
 lengths=[]
 print(len(all_texts))
 print(len(input_texts))
 print(len(output_texts))
-print(len(test_input_texts))
 
 for i in range(len(all_texts)):
     lengths.append(len(all_texts[i]))
@@ -86,9 +78,7 @@ print("Max length in words: ", max(length_words))
 
 
 
-# In[7]:
-
-
+#Model initialization
 tokenizer = T5Tokenizer.from_pretrained(model_name, model_max_length=SEQUENCE_LENGTH)
 
 
@@ -99,8 +89,7 @@ config.model_max_length = SEQUENCE_LENGTH
 model = T5ForConditionalGeneration.from_pretrained(model_name, config=config)
 
 
-train_inputs, temp_inputs, train_outputs, temp_outputs = train_test_split(input_texts, output_texts, shuffle=True,  test_size=0.3, random_state=42)
-val_inputs, test_inputs, val_outputs, test_outputs = train_test_split(temp_inputs, temp_outputs,  shuffle=True, test_size=0.5, random_state=42)
+train_inputs, val_inputs, train_outputs, val_outputs = train_test_split(input_texts, output_texts, shuffle=True,  test_size=0.3, random_state=42)
 
 
 def add_to_input_texts(input_texts):
@@ -120,7 +109,7 @@ def remove_from_texts(input_texts):
 
 train_inputs = add_to_input_texts(train_inputs)
 val_inputs= add_to_input_texts(val_inputs)
-test_inputs = add_to_input_texts(test_inputs)
+
 
 train_outputs = add_to_output_texts(train_outputs)
 val_outputs = add_to_output_texts(val_outputs)
@@ -160,8 +149,6 @@ class TranslationDataset(Dataset):
 train_dataset = TranslationDataset(tokenizer, train_inputs, train_outputs)
 val_dataset = TranslationDataset(tokenizer, val_inputs, val_outputs)
 
-
-# In[12]:
 
 
 from typing import Dict, List
@@ -209,10 +196,6 @@ class CustomDataCollator(DataCollatorForSeq2Seq):
         return {"input_ids": input_ids["input_ids"], "labels": labels}
 
 data_collator = CustomDataCollator(tokenizer)
-
-
-# In[13]:
-
 
 early_stopping_callback = EarlyStoppingCallback(
     early_stopping_patience=40,  

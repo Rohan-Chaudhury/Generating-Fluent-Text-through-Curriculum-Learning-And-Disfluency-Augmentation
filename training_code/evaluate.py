@@ -2,21 +2,20 @@
 
 
 BATCH_SIZE = 4
-# model_name = 't5-base'
+
 model_name = "/home/grads/r/rohan.chaudhury/Disfluency/models/checkpoint-2253"
 print ("Model name: ", model_name)
-
 output_csv_path= "."
 input_texts_path = "/home/grads/r/rohan.chaudhury/Disfluency/formatted_text/final_sw_whole/train/disfluent.txt"
 output_texts_path = "/home/grads/r/rohan.chaudhury/Disfluency/formatted_text/final_sw_whole/train/fluent.txt"
-test_input_texts_path = "/home/grads/r/rohan.chaudhury/Disfluency/formatted_text/final_sw_whole/train/fluent.txt"
+
 import os
 os.environ["WANDB_DISABLED"] = "true"
 os.environ["CUDA_VISIBLE_DEVICES"] = "3,2,1,0" 
 
 NUM_GPU=4
 SEQUENCE_LENGTH = 512
-# In[3]:
+
 import csv
 print ("Model name: ", model_name)
 import torch_optimizer as optim
@@ -43,7 +42,7 @@ from sklearn.metrics import precision_score, recall_score, f1_score
 from nltk.tokenize import word_tokenize
 from tqdm import tqdm
 import evaluate
-# In[4]:
+
 
 
 print ("Input texts path: ", input_texts_path)
@@ -52,13 +51,12 @@ print ("Output texts path: ", output_texts_path)
 
 input_texts = open(input_texts_path).read().split('\n')
 output_texts = open(output_texts_path).read().split('\n')
-test_input_texts = open(test_input_texts_path).read().split('\n')
 
 
-# In[5]:
 
 
-all_texts= input_texts + output_texts + test_input_texts
+
+all_texts= input_texts + output_texts
 all_words = []
 for i in all_texts:
     all_words.extend(i.split())
@@ -68,14 +66,14 @@ all_words = list(set(all_words))
 print(len(all_words))
 
 
-# In[6]:
+
 
 
 lengths=[]
 print(len(all_texts))
 print(len(input_texts))
 print(len(output_texts))
-print(len(test_input_texts))
+
 
 for i in range(len(all_texts)):
     lengths.append(len(all_texts[i]))
@@ -89,8 +87,6 @@ print("Max length in words: ", max(length_words))
 
 
 
-
-# In[7]:
 
 
 tokenizer = T5Tokenizer.from_pretrained(model_name, model_max_length=SEQUENCE_LENGTH)
@@ -129,7 +125,7 @@ print ("Number of test outputs: ", len(test_outputs))
 print ("First test input: ", test_inputs[0])
 print ("First test output: ", test_outputs[0])
 print ("Last test input: ", test_inputs[-1])
-print ("Last test output: ", test_outputs[-1])Z
+print ("Last test output: ", test_outputs[-1])
 
 
 
@@ -137,8 +133,7 @@ print ("Last test output: ", test_outputs[-1])Z
 
 def translate_batch(input_texts, model, tokenizer):
     device = model.device  # Get the device where the model is
-    # input_texts= add_to_input_texts(input_texts)
-    # print(input_texts[0])
+
     inputs = tokenizer(input_texts, max_length=SEQUENCE_LENGTH, return_tensors="pt", padding=True, truncation=True).to(device)  # Move input tensor to the model's device
     outputs = model.generate(inputs.input_ids, max_length=SEQUENCE_LENGTH, num_return_sequences=1)
     translated_texts = [tokenizer.decode(output, skip_special_tokens=True) for output in outputs]
