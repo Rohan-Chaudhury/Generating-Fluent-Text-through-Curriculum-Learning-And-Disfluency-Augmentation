@@ -1,0 +1,1 @@
+Power MOSFETs have a different structure than the lateral MOSFET: as with all power devices, their structure is vertical and not planar.

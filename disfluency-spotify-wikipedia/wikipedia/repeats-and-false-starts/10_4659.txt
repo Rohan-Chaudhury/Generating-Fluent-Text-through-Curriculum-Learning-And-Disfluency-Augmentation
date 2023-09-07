@@ -1,0 +1,1 @@
+This type of structure is common in econometric models. it can be also carried out with the Durbin Watson test.
