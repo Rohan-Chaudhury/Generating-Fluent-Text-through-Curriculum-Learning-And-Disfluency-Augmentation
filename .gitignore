@@ -1,5 +1,10 @@
 # from: https://github.com/github/gitignore/blob/main/Python.gitignore
 
+# project-specific
+disfluency-spotify-wikipedia/english-fisher-annotations/model/*
+disfluency-spotify-wikipedia/spotify/*
+disfluency-spotify-wikipedia/wikipedia/*
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
