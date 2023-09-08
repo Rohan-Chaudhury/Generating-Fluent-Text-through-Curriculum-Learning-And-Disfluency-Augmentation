@@ -43,7 +43,8 @@ def write_transformed_files_out():
     utils_general.just_create_this_dir(zero_dir)
 
     # iterate through all the files for this transformation type
-    files_list = [file for file in os.listdir(current_input_dir) if file.endswith(".txt")]
+    # files_list = [file for file in os.listdir(current_input_dir) if file.endswith(".txt")]
+    files_list = ["00DkMSm0fRH9TpwtvJL4N0.txt"]
     for file in files_list:
 
         # open the file and get the transcript text

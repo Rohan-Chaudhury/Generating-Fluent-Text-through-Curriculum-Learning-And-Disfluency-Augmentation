@@ -47,16 +47,16 @@ def get_transformed_text(N, transcript_text, list_to_use, rng):
             next_sublist = sublists[i+1]
         else:
             next_sublist = None
-
-        # append (possibly various) random interjections from the interjections list
-        # in all of the cases, the interjections are appended to the END of the random sublist
         
         shift_period = False
         for j in range(0,N):
             
+            # if this is a repeats transformation
             if list_to_use == []:
                 word = sublist[-1]
                 word = word.replace(".","").replace("!","").replace("?","")
+            
+            # if this is an interjections transformation
             else:
                 word = rng.choice(list_to_use)
             
@@ -64,24 +64,26 @@ def get_transformed_text(N, transcript_text, list_to_use, rng):
             if next_sublist == None:
                 continue
             
-            # 
+            # if there is 1 item being appended, and a period needs to be shifted
             elif (j == 0) and ("." in sublist[-1]) and (N == 1):
-                last_word = sublist.pop()
-                sublist.append(last_word.lower())
+                last_word = sublist.pop().replace(".","").replace("!","").replace("?","")
+                sublist.append(last_word)
                 sublist.append(word + ".")
                 
             # if this is the 
             elif (j == 0) and ("." in sublist[-1]):
-                last_word = sublist.pop()
-                sublist.append(last_word.lower())
+                print("CASE #2")
+                last_word = sublist.pop().replace(".","").replace("!","").replace("?","")
+                sublist.append(last_word)
                 sublist.append(word)
                 shift_period = True
+                print(sublist)
             
             # if this is the last word in a sentence, add a period.
             elif (next_sublist) and (j == N-1) and (shift_period == True):
                 sublist.append(word + ".")
                 
-            
+            # if no special modifications are needed, add the cleaned word
             else:
                 sublist.append(word)
 
