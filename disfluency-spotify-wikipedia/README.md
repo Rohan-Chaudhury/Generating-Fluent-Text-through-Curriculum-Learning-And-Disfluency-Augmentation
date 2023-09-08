@@ -26,7 +26,9 @@ There are 2 types of transformations that we do on this data:
         1. Use [these instructions](https://github.com/pariajm/english-fisher-annotations#using-the-model-to-annotate-fisher) to (1) clone the repo, (2) download the model and necessary resources for the model, and (3) unzip the model into this directory, `disfluency-spotify-wikipedia`.
         2. Create a virtual environment which meets [these requirements](https://github.com/pariajm/english-fisher-annotations#software-requirements) to run the script.
         3. Run the script [using these instructions](https://github.com/pariajm/english-fisher-annotations#using-the-model-to-annotate-fisher) on these files:
-            * 
+            * `mkdir spotify/annotated`
+            * `$ python main.py --input-path ./spotify/0 --output-path ./spotify/annotated --model ./model/swbd_fisher_bert_Edev.0.9078.pt`
+            * then run the script which takes annotated -> puts it in the -1 folder all cleaned up nicely!!!
 
 
 # References
