@@ -16,12 +16,17 @@ else:
     torch_t = torch
     from torch import from_numpy
 
+print("do i make it this far")
 import pyximport
 pyximport.install(setup_args={"include_dirs": np.get_include()})
 import chart_helper
 import nkutil
 
+print("do i make it this far2")
+
 import trees
+
+print("do i make it this far3")
 
 START = "<START>"
 STOP = "<STOP>"
@@ -186,7 +191,7 @@ class ScaledDotProductAttention(nn.Module):
                     'with Attention logit tensor shape ' \
                     '{}.'.format(attn_mask.size(), attn.size())
 
-            attn.data.masked_fill_(attn_mask, -float('inf'))
+            attn.data.masked_fill_(attn_mask.bool(), -float('inf'))
 
         attn = self.softmax(attn)
         # Note that this makes the distribution not sum to 1. At some point it
@@ -350,7 +355,7 @@ class MultiHeadAttention(nn.Module):
             q_padded, k_padded, v_padded,
             attn_mask=attn_mask,
             )
-        outputs = outputs_padded[output_mask]
+        outputs = outputs_padded[output_mask.bool()]
         outputs = self.combine_v(outputs)
 
         outputs = self.residual_dropout(outputs, batch_idxs)
@@ -1018,7 +1023,7 @@ class NKChartParser(nn.Module):
             features = all_encoder_layers[-1]
 
             if self.encoder is not None:
-                features_packed = features.masked_select(all_word_end_mask.to(torch.uint8).unsqueeze(-1)).reshape(-1, features.shape[-1])
+                features_packed = features.masked_select(all_word_end_mask.to(torch.bool).unsqueeze(-1)).reshape(-1, features.shape[-1])
 
                 # For now, just project the features from the last word piece in each word
                 extra_content_annotations = self.project_bert(features_packed)

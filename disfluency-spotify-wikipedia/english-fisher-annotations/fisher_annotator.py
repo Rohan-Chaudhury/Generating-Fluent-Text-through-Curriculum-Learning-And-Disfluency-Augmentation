@@ -21,6 +21,8 @@ import torch
 
 import parse_nk
 
+import shutil
+
 
 class DisfluencyTagger:
     """
@@ -149,55 +151,46 @@ class Annotate(Parser):
         self.disfluency = kwargs["disfluency"] 
 
     def setup(self): 
-        all_2004 = self.parse_sentences(            
-            trans_data=os.path.join(
-                "LDC2004T19", 
-                "fe_03_p1_tran", 
-                "data", 
-                "trans",
-                ),
-            parsed_data="fisher-2004-annotations"
-        )
+        self.parse_sentences()
 
-        all_2005 = self.parse_sentences(
-            trans_data=os.path.join(
-                "LDC2005T19", 
-                "fe_03_p2_tran", 
-                "data", 
-                "trans",
-                ),
-            parsed_data="fisher-2005-annotations"
-        )
+    def parse_sentences(self):
 
-    def parse_sentences(self, trans_data, parsed_data):
-        input_dir = os.path.join(self.input_path, trans_data)
-        output_dir = os.path.join(self.output_path, parsed_data)
-        if not os.path.exists(output_dir):
-            os.makedirs(output_dir)   
-        # Loop over transcription files
-        for root, dirnames, filenames in os.walk(input_dir):
-            for filename in fnmatch.filter(filenames, "*.txt"):
-                trans_file = os.path.join(root, filename)
-                segments = self.read_transcription(trans_file) 
-                # Loop over cleaned/pre-proceesed transcripts         
-                doc = [segment for segment in segments if segment]    
-                parse_trees, df_labels = self.run_parser(doc)
+        input_dir = self.input_path
+        output_dir = self.output_path
+        
+        if not os.path.isdir(output_dir):
+            os.mkdir(output_dir)
+        else:
+            shutil.rmtree(output_dir)
+            os.mkdir(output_dir)
+
+        transcript_files_list = os.listdir(input_dir)
+        transcript_files_list = [f for f in transcript_files_list if (f.endswith(".txt") and not f.endswith("-checkpoint.txt"))]
+
+        for file in transcript_files_list:
+
+            full_filename = os.path.join(input_dir, file)
+            new_filename = os.path.join(output_dir, file.replace(".txt", "") + "_parse.txt")
+
+            doc = self.read_transcription(full_filename)
+
+            try:
+                parse_trees, df_labels = self.run_parser(doc) # so this doc needs to be a list of sentences
+
                 # Write constituency parse trees and disfluency labels into files
-                new_filename = os.path.join(
-                    output_dir, 
-                    os.path.basename(trans_file[:-4])+"_parse.txt"
-                    )
+                
                 with open(new_filename, "w") as output_file:
                     output_file.write("\n".join(parse_trees))
 
-                if self.disfluency:
-                    new_filename = os.path.join(
-                        output_dir, 
-                        os.path.basename(trans_file[:-4])+"_dys.txt"
-                        )
-                    with open(new_filename, "w") as output_file:
-                        output_file.write("\n".join(df_labels))
+                new_filename = os.path.join(output_dir, file.replace(".txt", "") + "_dys.txt")
+                with open(new_filename, "w") as output_file:
+                    output_file.write("\n".join(df_labels))
+                        
+                print("next")
 
+            except BaseException as E:
+                print(E)
+                    
         return
 
     def read_transcription(self, trans_file):

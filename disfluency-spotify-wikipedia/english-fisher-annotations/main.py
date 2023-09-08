@@ -13,6 +13,8 @@ def main():
     parser.add_argument("--model", type=str, default="./model/swbd_fisher_bert_Edev.0.9078.pt")
     parser.add_argument("--disfluency", type=bool, default=True)
     args = parser.parse_args()
+    
+    print(args)
 
     labels = fisher_annotator.Annotate(
         input_path=args.input_path,
@@ -20,6 +22,7 @@ def main():
         model=args.model,
         disfluency=args.disfluency,
         )
+    
     labels.setup()
 
 if __name__ == "__main__":
