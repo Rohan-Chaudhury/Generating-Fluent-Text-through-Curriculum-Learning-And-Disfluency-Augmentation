@@ -48,6 +48,10 @@ def write_transformed_files_out(INPUT_LIST=["spotify"]):
                 current_trf_dir = os.path.join(current_input_dir, t)
                 utils_general.just_create_this_dir(current_trf_dir)
                 
+                # n = 0
+                
+                
+                # n = 1 to 10
                 for n in [0,1,2,3,4,5,6,7,8,9,10]:
                     
                     # open the file and get the transcript text

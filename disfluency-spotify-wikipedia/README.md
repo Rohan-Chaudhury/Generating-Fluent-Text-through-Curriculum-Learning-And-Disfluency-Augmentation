@@ -22,6 +22,11 @@ There are 2 types of transformations that we do on this data:
 1. **Synthetic Disfluency Augmentation (0 to 10 transformations)**: We run our repeats, interjections, and false starts transformations on the podcast transcripts.
 2. **Disfluency Annotation Model (-1 transformation)**: We run Jamshid Lou and Johnson's (2020) model on the 0 podcast transcripts and remove words marked as disfluent. 
     * The repository for Jamshid Lou and Johnson (2020) is [here](https://github.com/pariajm/joint-disfluency-detector-and-parser). On this page, they note [here](https://github.com/pariajm/joint-disfluency-detector-and-parser#using-the-trained-models-for-disfluency-tagging) to use [this](https://github.com/pariajm/english-fisher-annotations) repository for "us\[ing\] the trained models to disfluency label your own data."
+    * Steps to run it: 
+        1. Use [these instructions](https://github.com/pariajm/english-fisher-annotations#using-the-model-to-annotate-fisher) to (1) clone the repo, (2) download the model and necessary resources for the model, and (3) unzip the model into this directory, `disfluency-spotify-wikipedia`.
+        2. Create a virtual environment which meets [these requirements](https://github.com/pariajm/english-fisher-annotations#software-requirements) to run the script.
+        3. Run the script [using these instructions](https://github.com/pariajm/english-fisher-annotations#using-the-model-to-annotate-fisher) on these files:
+            * 
 
 
 # References

@@ -5,6 +5,9 @@ from nltk.tokenize import sent_tokenize
 
 from collections import Counter
 
+def capitalize_after_period(text):
+        return re.sub(r'(?<=\. )\w', lambda m: m.group().upper(), text)
+
 # util function used to create randomly-sized sublists for various transformations
 def get_sublists(transcript_text, rng):
     
@@ -86,12 +89,9 @@ def get_transformed_text(N, transcript_text, list_to_use, rng):
 
     new_text = " ".join(substrings)
     
-    def capitalize_after_period(text):
-        return re.sub(r'(?<=\. )\w', lambda m: m.group().upper(), text)
-    
     new_text = capitalize_after_period(new_text)
     
-    if (new_text.split(" ")[-1] != "<SEP>") and (new_text[-1] != "."):
+    if new_text[-1] != ".":
         new_text = new_text + "."
     
     return new_text
@@ -118,7 +118,7 @@ def get_EDITED_text(N, transcript_text, rng):
     sentences_len_gteq4 = [s for s in sentences if len(s.split(" ")) >= 4]
     
     # randomly determine which sentences to inject a false start into 
-    sentences_len_gteq4_mask = rng.choice(1+1,size=len(sentences_len_gteq4), replace=True,p=[0.80,0.20]) #p=[0,1]
+    sentences_len_gteq4_mask = rng.choice(1+1,size=len(sentences_len_gteq4), replace=True,p=[0.80,0.20])
     sentences_len_gteq4_mask_index = 0
     
     # then iterate through the sentences and inject those false starts based on the mask
@@ -143,7 +143,7 @@ def get_EDITED_text(N, transcript_text, rng):
                     subsentence_list = sentence_list[0:2]
                     rest_of_sentence_list = sentence_list[2:]
                     
-                    subsentence_list = [s.replace(".","") for s in subsentence_list]
+                    # subsentence_list = [s.replace(".","") for s in subsentence_list]
                     subsentence = " ".join(subsentence_list).strip()
                     rest_of_sentence = " ".join(rest_of_sentence_list).strip()
 
@@ -182,7 +182,9 @@ def get_EDITED_text(N, transcript_text, rng):
     # join all the sentences to build the new transcript
     new_text = " ".join(new_sentences)
     
-    if (new_text.split(" ")[-1] != "<SEP>") and (new_text[-1] != "."):
+    new_text = capitalize_after_period(new_text)
+    
+    if new_text[-1] != ".":
         new_text = new_text + "."
     
     # and return the new transcript

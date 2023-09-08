@@ -2,7 +2,7 @@ import os
 import shutil
 
 # set these paths
-PATH_TO_PROJECT = "/home/grads/m/mariateleki/08_14_23/disfluency-spotify-wikipedia"
+PATH_TO_PROJECT = "/home/grads/m/mariateleki/Generating-Fluent-Text-through-Curriculum-Learning-And-Disfluency-Augmentation/disfluency-spotify-wikipedia"
 PATH_TO_2020_TESTSET_DIR = "/data2/maria/Spotify/TREC/spotify-podcasts-2020/podcasts-transcripts-summarization-testset"
 PATH_TO_2020_TESTSET_DF = "/data2/maria/Spotify/TREC/spotify-podcasts-2020/metadata-summarization-testset.tsv"
 
