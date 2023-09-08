@@ -64,19 +64,20 @@ def get_transformed_text(N, transcript_text, list_to_use, rng):
             if next_sublist == None:
                 continue
             
+            # 
             elif (j == 0) and ("." in sublist[-1]) and (N == 1):
                 last_word = sublist.pop()
                 sublist.append(last_word.lower())
                 sublist.append(word + ".")
                 
-            # if this is the first interjection being appended, and there's a 
+            # if this is the 
             elif (j == 0) and ("." in sublist[-1]):
                 last_word = sublist.pop()
                 sublist.append(last_word.lower())
                 sublist.append(word)
-                
                 shift_period = True
             
+            # if this is the last word in a sentence, add a period.
             elif (next_sublist) and (j == N-1) and (shift_period == True):
                 sublist.append(word + ".")
                 
@@ -95,6 +96,70 @@ def get_transformed_text(N, transcript_text, list_to_use, rng):
         new_text = new_text + "."
     
     return new_text
+
+# def get_transformed_text(N, transcript_text, list_to_use, rng):
+
+#     # get sublists of random size of the transcript text
+#     sublists = get_sublists(transcript_text, rng)
+
+#     substrings = []
+#     for i in range(len(sublists)):
+#         sublist = sublists[i]
+        
+#         if i+1 < len(sublists)-1:
+#             next_sublist = sublists[i+1]
+#         else:
+#             next_sublist = None
+
+#         # append (possibly various) random interjections from the interjections list
+#         # in all of the cases, the interjections are appended to the END of the random sublist
+        
+#         shift_period = False
+#         for j in range(0,N):
+            
+#             if list_to_use == []:
+#                 word = sublist[-1]
+#                 word = word.replace(".","").replace("!","").replace("?","")
+#             else:
+#                 word = rng.choice(list_to_use)
+            
+#             # print()
+#             # print("N=", N)
+#             # print("word =", word, "j=", j)
+            
+#             # if this is the end of the transcript, do NOT append anything
+#             if next_sublist == None:
+#                 continue
+            
+#             # elif ((j == 0) and ("." in sublist[-1]) and (N == 1)):
+#             #     last_word = sublist.pop()
+#             #     sublist.append(last_word.lower())
+#             #     sublist.append(word + ".")
+                
+#             elif (j == 0) and ("." in sublist[-1]):
+#             # elif ("." in sublist[-1]):
+#                 last_word = sublist.pop()
+#                 # sublist.append(last_word.lower())
+#                 sublist.append(word)
+#                 shift_period = True
+            
+#             elif (next_sublist) and (j == N-1) and (shift_period == True):
+#                 sublist.append(word + ".")
+
+#             else:
+#                 sublist.append(word)
+                
+#         substring = " ".join(sublist)
+#         substrings.append(substring)
+
+#     new_text = " ".join(substrings)
+    
+#     new_text = capitalize_after_period(new_text)
+    
+#     if new_text[-1] != ".":
+#         new_text = new_text + "."
+    
+#     return new_text
 
 def get_repeats_text(n, transcript_text, rng):
     return get_transformed_text(N=n, transcript_text=transcript_text, list_to_use=[], rng=rng)
