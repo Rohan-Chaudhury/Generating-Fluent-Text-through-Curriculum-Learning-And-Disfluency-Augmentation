@@ -1,1 +1,1 @@
-John von Neumann studied the properties of the group of equivalences that make a paradoxical decomposition possible, identifying the class of amenable groups, for which no paradoxical decompositions exist.
+John von Neumann studied the properties of the group of equivalences that make make a paradoxical decomposition possible, identifying the class of amenable groups, for which no paradoxical decompositions exist.

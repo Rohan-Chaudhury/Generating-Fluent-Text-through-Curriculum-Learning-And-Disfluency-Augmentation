@@ -1,1 +1,1 @@
-One or more consecutive groups of zero value may be replaced with a single empty group using two consecutive colons (: : ), but the substitution may only be applied once in the address, because multiple occurrences would create an ambiguous representation.
+One or more consecutive groups of zero value may be replaced with a a a a well I mean you know I mean a single empty group using two consecutive colons (: : ), but the substitution okay like you know um may only be applied once in the address, because multiple occurrences would create an ambiguous representation.

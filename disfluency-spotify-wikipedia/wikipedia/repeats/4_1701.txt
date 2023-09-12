@@ -1,1 +1,1 @@
-However, an interesting special case is a torque - free resultant which it is useful both conceptually and practically, because the body moves without rotating as if it was a particle.
+However, an interesting special case is a torque - free resultant which it is useful useful useful useful useful both conceptually and practically, because the body moves without rotating as if it was a particle.

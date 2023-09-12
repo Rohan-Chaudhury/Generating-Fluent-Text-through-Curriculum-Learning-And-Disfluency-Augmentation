@@ -16,17 +16,12 @@ else:
     torch_t = torch
     from torch import from_numpy
 
-print("do i make it this far")
 import pyximport
 pyximport.install(setup_args={"include_dirs": np.get_include()})
 import chart_helper
 import nkutil
 
-print("do i make it this far2")
-
 import trees
-
-print("do i make it this far3")
 
 START = "<START>"
 STOP = "<STOP>"

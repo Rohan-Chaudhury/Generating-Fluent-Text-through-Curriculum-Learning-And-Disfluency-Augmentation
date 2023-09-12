@@ -1,1 +1,0 @@
-MindGenius contains a series of export features to MS Office applications such as Word, PowerPoint, PDF and Project.

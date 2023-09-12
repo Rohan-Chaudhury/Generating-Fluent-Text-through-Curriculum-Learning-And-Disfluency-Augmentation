@@ -1,1 +1,0 @@
-The units of analysis in lexical semantics are lexical units, which can be free or bound morphemes.

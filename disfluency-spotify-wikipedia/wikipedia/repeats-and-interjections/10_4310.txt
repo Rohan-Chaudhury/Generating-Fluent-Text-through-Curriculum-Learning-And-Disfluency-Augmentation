@@ -1,1 +1,1 @@
-The pwd command (print working directory) is used to print the name of current working directory, if the shell prompt does not show this, the user can find their place in the directory tree.
+The pwd command (print working directory) is used to print the name of current so like so so I mean okay so um so so current current current current current current current current current current working directory, if the shell like okay okay I mean I mean like uh well uh you know prompt does not show this, the user can find their place in the directory tree.

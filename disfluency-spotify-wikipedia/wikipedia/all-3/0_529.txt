@@ -1,1 +1,0 @@
-Bash is a Unix shell written by Brian Fox for the GNU Project.

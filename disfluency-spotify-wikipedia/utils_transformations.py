@@ -18,7 +18,7 @@ def get_sublists(transcript_text, rng):
     while start_index < len(text_list):
 
         # get a random sublist
-        mu = 15 
+        mu = 15
         sigma = 1
         rand_int = int(rng.normal(mu, sigma)) 
         

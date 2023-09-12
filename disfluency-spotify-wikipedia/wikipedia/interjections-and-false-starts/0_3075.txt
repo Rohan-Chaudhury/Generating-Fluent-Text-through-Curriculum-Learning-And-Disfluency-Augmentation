@@ -1,1 +1,0 @@
-Photons from an ideal single photon source exhibit photon antibunching, so that the time between two successive photons is never less than some minimum value.

@@ -1,1 +1,1 @@
-PSR J1614 -- 2230 spins on its axis roughly 317 times per second, corresponding to a period of 3. 15 milliseconds, and like all pulsars, emits radiation in a beam, much like a lighthouse.
+PSR J1614 -- 2230 spins on its axis roughly 317 times per second, corresponding okay to a period of 3. 15 milliseconds, and like all pulsars, emits radiation in a beam, much like a lighthouse.

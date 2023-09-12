@@ -1,1 +1,1 @@
-The Brahmi - derived writing systems are mostly rather similar in structure, but have different letter shapes, so ISCII encodes letters with the same phonetic value at the same codepoint, overlaying the various scripts.
+The Brahmi - derived writing systems are mostly rather similar in structure, but have have have have have different letter shapes, so ISCII encodes letters with the same phonetic value at the same codepoint, overlaying the various scripts.

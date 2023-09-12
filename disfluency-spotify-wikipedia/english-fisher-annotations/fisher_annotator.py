@@ -174,6 +174,8 @@ class Annotate(Parser):
 
             doc = self.read_transcription(full_filename)
 
+            print(file, "doc:", doc)
+
             try:
                 parse_trees, df_labels = self.run_parser(doc) # so this doc needs to be a list of sentences
 
@@ -185,23 +187,103 @@ class Annotate(Parser):
                 new_filename = os.path.join(output_dir, file.replace(".txt", "") + "_dys.txt")
                 with open(new_filename, "w") as output_file:
                     output_file.write("\n".join(df_labels))
-                        
-                print("next")
 
             except BaseException as E:
-                print(E)
+                print("BaseException:", E)
                     
         return
 
-    def read_transcription(self, trans_file):
-        with codecs.open(trans_file, "r", "utf-8") as fp:
-            for line in fp:
-                if line.startswith("#") or len(line) <= 1:
-                    continue                
-                tokens = line.split() 
-                yield self.validate_transcription(
-                    " ".join(tokens[3:])
-                    )           
+    # def read_transcription(self, trans_file):
+    #     with codecs.open(trans_file, "r", "utf-8") as fp:
+    #         for line in fp:
+    #             if line.startswith("#") or len(line) <= 1:
+    #                 continue                
+    #             tokens = line.split() 
+    #             yield self.validate_transcription(
+    #                 " ".join(tokens[3:])
+    #                 )  
+    
+    def read_transcription(self, trans_file):  
+        with open(trans_file) as f:
+            contents = f.read()
+            
+        # split into sentences
+        sentences = contents.split(".")
+        cleaned_sentences = []
+        for sentence in sentences:
+
+            # split into words within the sentences, clean
+            tokens = sentence.split(" ")
+            cleaned_tokens = []
+            for token in tokens:
+                token = self.validate_transcription(token)
+                if token is not None:
+                    cleaned_tokens.append(token)
+            cleaned_sentence = " ".join(cleaned_tokens)
+
+            if(len(cleaned_sentence) > 0):
+                cleaned_sentences.append(cleaned_sentence)
+                
+        print("cs:", cleaned_sentences)
+                
+        return cleaned_sentences
+
+#     def clean_word(self, word):
+        
+#         if re.search(r"[0-9]|[(<\[\]&*{]", word):
+#             word = ""
+
+#         word = word.replace("_", " ")
+#         word = re.sub("[ ]{2,}", " ", word)
+#         word = word.replace(".", "")
+#         word = word.replace(",", "")
+#         word = word.replace(";", "")
+#         word = word.replace("?", "")
+#         word = word.replace("!", "")
+#         word = word.replace(":", "")
+#         word = word.replace("\"", "")
+#         word = word.replace("'re", " 're")
+#         word = word.replace("'ve", " 've")
+#         word = word.replace("n't", " n't")
+#         word = word.replace("'ll", " 'll")
+#         word = word.replace("'d", " 'd")
+#         word = word.replace("'m", " 'm")
+#         word = word.replace("'s", " 's")
+#         word = word.strip()
+#         word = word.lower()
+        
+#         return word  
+ 
+    
+#     def read_transcription(self, trans_file):  
+        
+#         with open(trans_file) as f:
+#             contents = f.read()
+
+#         tokens = contents.split(" ")
+#         cleaned_tokens = []
+#         for token in tokens:
+#             s = self.clean_word(token)
+#             cleaned_tokens.append(s)
+
+#         print(cleaned_tokens)
+#         r = ' '.join(cleaned_tokens)
+        
+#         print(r)
+#         return r
+
+
+    # def read_transcription(self, trans_file):
+    #     with codecs.open(trans_file, "r", "utf-8") as fp:
+    #         for line in fp:    
+    #             print(line)
+    #             tokens = line.split() 
+    #             print(tokens)
+    #             yield self.validate_transcription(
+    #                 " ".join(tokens)
+    #                 )
+    
+    
 
     @staticmethod
     def validate_transcription(label):

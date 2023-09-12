@@ -1,1 +1,1 @@
-Most disk partitioning schemes are designed to have files occupy a multiple of sectors regardless of the file's actual size files that do not fill a whole sector will have the remainder of their last sector filled with zeroes.
+Most disk partitioning schemes are designed to have files occupy a multiple of sectors regardless um you know so of the file's actual size files that do not fill a whole sector will have the remainder of their last sector filled with zeroes.

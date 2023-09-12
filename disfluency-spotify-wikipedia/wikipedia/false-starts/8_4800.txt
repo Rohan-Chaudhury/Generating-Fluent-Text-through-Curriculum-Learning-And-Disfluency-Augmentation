@@ -1,1 +1,1 @@
-Unlike traditional virtual machines, a Docker container does not include a separate operating system, instead it relies on the operating system's functionality provided by the underlying infrastructure.
+Unlike traditional unlike traditional unlike traditional unlike traditional unlike traditional unlike traditional unlike traditional unlike traditional unlike traditional virtual machines, a Docker container does not include a separate operating system, instead it relies on the operating system's functionality provided by the underlying infrastructure.

@@ -1,1 +1,1 @@
-Almost all of the functionality in the editor can be reconfigured using Emacs Lisp, a simple and easy to learn language, changes to the Lisp code do not require the editor to be restarted or recompiled.
+Almost all of the functionality in the editor can be reconfigured using Emacs Lisp, uh you know I mean well I mean a a a a a a simple and easy to learn language, changes to the Lisp code do not require the editor to be restarted or recompiled.
