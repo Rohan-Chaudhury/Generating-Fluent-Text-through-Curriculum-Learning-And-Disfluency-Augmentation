@@ -13,6 +13,8 @@ def get_model_files(dataset_name="spotify", trfs=["repeats", "interjections", "f
     
     # for the 1-10 dirs
     for t in trfs:
+        
+        utils_general.create_and_or_clear_this_dir(os.path.join(output_dir, t))
 
         # iterate through k = 0, then append to k = 1,2,3,... for the rest of them
         files_list = [f for f in os.listdir(zero_dir) if (f.endswith(".txt") and not f.endswith("-checkpoint.txt"))]
@@ -22,7 +24,7 @@ def get_model_files(dataset_name="spotify", trfs=["repeats", "interjections", "f
             text = ""  # initialize
             text = utils_general.read_file(os.path.join(zero_dir, f))
             
-            with open(os.path.join(output_dir, "0.txt"), mode="a") as open_file:
+            with open(os.path.join(output_dir, t, "0.txt"), mode="a") as open_file:
                 open_file.write(f + ": " + text + "\n")
 
             # get all of the rest of the k-versions of this file
@@ -33,5 +35,5 @@ def get_model_files(dataset_name="spotify", trfs=["repeats", "interjections", "f
                 text = utils_general.read_file(os.path.join(utils_general.PATH_TO_PROJECT, dataset_name, t, str(k) + "_" + f))
 
                 # write it out to the csv
-                with open(os.path.join(output_dir, str(k) + ".txt"), mode="a") as open_file:
+                with open(os.path.join(output_dir, t, str(k) + ".txt"), mode="a") as open_file:
                     open_file.write(f + ": " + text + "\n")
