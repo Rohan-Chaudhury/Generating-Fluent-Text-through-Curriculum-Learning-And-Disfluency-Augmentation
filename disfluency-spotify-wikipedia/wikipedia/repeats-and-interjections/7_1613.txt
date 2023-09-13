@@ -1,1 +1,1 @@
-HidesterVPN supports several protocols such as PPTP, L2TP / IPSec and OpenVPN, additional you know well so uh I mean like you know features include DNS leak protection, IPv6 leak protection, multiple VPN gateways, unlimited bandwidth and split tunneling.
+HidesterVPN supports several protocols such as PPTP, L2TP / IPSec okay so well so okay uh I mean and and and and and and and and OpenVPN, additional um okay I mean well so well um features include DNS leak protection, IPv6 leak protection, multiple VPN gateways, unlimited bandwidth and split tunneling.

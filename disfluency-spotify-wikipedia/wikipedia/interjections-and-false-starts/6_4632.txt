@@ -1,1 +1,1 @@
-This is the most basic of the CDC family of profiles hackedis a set okay um I mean so like okay of Java APIs tuned for low - footprint devices that have limited resources that do not need a graphical user interface system.
+This is this is this is this is this is this is this is the most basic of the CDC family of profiles okay um so well I mean you know hackedis a set of Java APIs tuned for you know um well uh okay I mean low - footprint devices that have limited resources um well you know uh so I mean that do not need a graphical user interface system.

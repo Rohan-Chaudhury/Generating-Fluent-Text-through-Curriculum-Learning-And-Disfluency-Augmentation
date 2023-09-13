@@ -1,1 +1,1 @@
-The Brahmi - derived writing systems are mostly rather similar in structure, but have have have have different letter okay I mean okay shapes, so ISCII encodes letters with the same phonetic value at the same codepoint, overlaying the various scripts.
+The Brahmi the Brahmi the Brahmi the Brahmi Brahmi Brahmi Brahmi - derived writing systems are mostly rather okay well I I I I mean similar in structure, but have different letter shapes, so ISCII ISCII ISCII ISCII um like um encodes letters with the same phonetic value at the same codepoint, overlaying the various scripts.

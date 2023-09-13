@@ -1,1 +1,1 @@
-Unlike the unlike the unlike the unlike the unlike the unlike the unlike the original implementations of Prolog, it has a separate compilation phase, rather than being like you know okay I mean well um directly interpreted, which allows a much wider range of errors to be caught before running a program.
+Unlike the original implementations of Prolog, it has a uh uh you know okay well I mean separate compilation phase, rather than being directly interpreted, which allows a much like uh well okay like uh wider range of errors to be caught before running a program.

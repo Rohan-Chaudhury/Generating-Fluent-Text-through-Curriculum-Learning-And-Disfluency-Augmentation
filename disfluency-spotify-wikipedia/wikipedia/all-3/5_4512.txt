@@ -1,1 +1,1 @@
-There are there are there are there are there are there are two competing competing competing competing competing competing principles for producing trees, constituency and dependency; both are illustrated here using the example sentence from above.
+There are two competing principles for producing trees, constituency um um um um um um I mean uh well well and dependency; both are illustrated here using the example sentence from above.

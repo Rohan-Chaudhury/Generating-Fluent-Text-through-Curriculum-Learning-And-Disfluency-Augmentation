@@ -1,1 +1,1 @@
-The reference Cool compiler is written in C++, built entirely on public domain tools; it generates code for a MIPS simulator, SPIM.
+The reference Cool compiler is written in C++, built entirely um uh um uh well uh you know on public domain tools; it generates code for a MIPS simulator, SPIM.

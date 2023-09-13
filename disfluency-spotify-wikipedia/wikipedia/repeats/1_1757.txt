@@ -1,1 +1,1 @@
-If the train must continue a journey after calling at a terminal station, the train may may not continue in a straight line through the station, it must reverse out of the station.
+If the train must continue a journey after calling at at a terminal station, the train may not continue in in a straight line through the station, it must reverse out of the station.

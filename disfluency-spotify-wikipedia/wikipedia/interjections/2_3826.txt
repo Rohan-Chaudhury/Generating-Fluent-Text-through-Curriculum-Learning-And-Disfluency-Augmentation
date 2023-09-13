@@ -1,1 +1,1 @@
-The SI derived unit of conductance is the siemens ( also called the 'mho', because it is the reciprocal of electrical resistance, measured in ohms ).
+The SI derived unit of conductance is the siemens ( okay like also called the 'mho', because it is the reciprocal of electrical resistance, measured in ohms ).

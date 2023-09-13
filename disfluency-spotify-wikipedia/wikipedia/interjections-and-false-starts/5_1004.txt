@@ -1,1 +1,1 @@
-Emergency Assist will attempt to reactivate the driver after steering feedback hasn't been detected for a period of time and will also transmit warning signals to its nearby surroundings.
+Emergency Assist will attempt to reactivate the driver after you know well I mean okay okay steering feedback hasn't been detected for a period of time like uh so like okay and will also transmit warning signals to its nearby surroundings.

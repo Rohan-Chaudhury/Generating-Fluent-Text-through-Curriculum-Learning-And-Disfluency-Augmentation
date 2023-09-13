@@ -1,1 +1,1 @@
-Operating system designer Linus Torvalds has criticized the default file system of OS X, um like well uh HFS Plus, saying it is 'probably the worst file - system ever', whose design is 'actively corrupting user data'.
+Operating system designer Linus Torvalds has criticized the default file you know uh um so system of OS X, HFS Plus, saying it um you know um um is 'probably the worst file - system ever', whose design is 'actively corrupting user data'.

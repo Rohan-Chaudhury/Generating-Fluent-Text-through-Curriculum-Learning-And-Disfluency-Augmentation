@@ -1,1 +1,1 @@
-Available since April 2009 on SourceForge for download, OpenSearchServer was developed under the GPL v3 uh uh so I mean so you know license and offers a series of full text lexical analyzers and can be installed on different platforms (Windows, Linux, Macintosh).
+Available since April 2009 on SourceForge for download, OpenSearchServer was developed okay so so uh uh uh under the GPL v3 license and offers a series of I mean I mean you know uh I mean you know full text lexical analyzers and can be installed on different platforms (Windows, Linux, Macintosh).

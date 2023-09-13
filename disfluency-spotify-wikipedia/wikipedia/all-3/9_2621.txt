@@ -1,1 +1,1 @@
-Many IETF RFCs use the term 'network order'; it simply describes the order of transmission for bits and bytes 'over the wire' in network protocols.
+Many IETF RFCs use the term 'network order'; order'; order'; order'; order'; order'; order'; order'; order'; order'; it simply well um okay so you know you know know know know know know know know know know so like uh describes the order of transmission for for for for for for for for for for bits and bytes 'over the wire' in network protocols.

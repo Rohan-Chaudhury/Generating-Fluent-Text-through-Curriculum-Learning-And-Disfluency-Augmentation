@@ -1,1 +1,1 @@
-Its worst - case time complexity is, but on average its performance is or or or or or or even depending on the random distribution on automata chosen to model the algorithm's average - case behavior.
+Its worst - case time complexity is, but on average average average average average average its performance is or even depending on the random distribution on automata chosen to model the algorithm's average - case behavior.

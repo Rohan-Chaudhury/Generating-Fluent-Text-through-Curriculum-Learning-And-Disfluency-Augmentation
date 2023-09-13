@@ -1,1 +1,1 @@
-Foveated imaging is a gaze - contingency paradigm form of digital image processing in which you know well the image resolution, or amount of detail, varies across the image according to one or more 'points of gaze' or 'regions of interest'.
+Foveated imaging is a gaze - contingency paradigm form of I mean you know digital image processing in which the image resolution, or okay you know amount of detail, varies across the image according to one or more 'points of gaze' or 'regions of interest'.

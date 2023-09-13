@@ -1,1 +1,1 @@
-The player can click anywhere on the mini-map to instantly jump to that location; however, you know okay uh um the mini-map does not initially display the entire battlefield; the player must explore the area for it to become fully mapped.
+The player can click anywhere on the mini-map to instantly um uh okay I mean jump to that location; however, the mini-map does not like uh so um initially display the entire battlefield; the player must explore the area for it to become fully mapped.

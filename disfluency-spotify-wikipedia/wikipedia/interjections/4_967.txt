@@ -1,1 +1,1 @@
-Dynamic Host Configuration Protocol is used by computers for mnnit mnnit requesting Internet Protocol parameters, such as an IP address from a network server.
+Dynamic Host Configuration Protocol is used by computers well okay well um for mnnit mnnit requesting Internet Protocol parameters, such as an IP address from a network server.

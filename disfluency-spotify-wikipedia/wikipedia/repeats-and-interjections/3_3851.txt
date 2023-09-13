@@ -1,1 +1,1 @@
-The Terminal frame alignment pattern is carried in odd - numbered frames, inside inside inside like so uh inside the super frame, and consists of alternating 1s and 0s: 1 -- 0 -- 1 -- 0 -- 1 -- 0.
+The Terminal frame alignment pattern is carried in odd - - you know I mean like - - numbered frames, inside the super frame, and consists like so I mean of alternating alternating alternating alternating 1s and 0s: 1 okay uh I mean -- 0 -- 1 -- 0 -- 1 -- 0.

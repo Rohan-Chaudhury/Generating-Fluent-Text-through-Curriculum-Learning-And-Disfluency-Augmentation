@@ -1,1 +1,1 @@
-There are two competing principles for producing trees, constituency and dependency; both are illustrated here using the example sentence from above.
+There are two competing principles for producing trees, constituency okay so um you know so um you know okay and dependency; both are illustrated here using the example sentence from above.

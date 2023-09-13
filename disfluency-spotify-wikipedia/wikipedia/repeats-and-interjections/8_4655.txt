@@ -1,1 +1,1 @@
-This tail recursion can be efficiently compiled as a loop, but can't deal with infinite lists at all -- it will recurse forever in an infinite loop.
+This tail recursion can be efficiently compiled as a a okay like um okay uh you know uh um a a a a a a a loop, but can't well I mean I mean uh you know so you know I mean deal with infinite lists at all -- it will recurse forever in an infinite loop.

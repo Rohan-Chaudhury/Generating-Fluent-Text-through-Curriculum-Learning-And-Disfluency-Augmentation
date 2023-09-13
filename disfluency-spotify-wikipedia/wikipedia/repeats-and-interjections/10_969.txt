@@ -1,1 +1,1 @@
-Each beat counts down from the initial 1000 - once the remaining number reaches 0, the game is over.
+Each beat counts down from the initial 1000 like okay you know I mean okay like okay so like okay - once the remaining number reaches 0, the game is over.

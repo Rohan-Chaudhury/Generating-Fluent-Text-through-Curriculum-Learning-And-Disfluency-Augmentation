@@ -1,1 +1,1 @@
-If this congruence is true, then 'n' is a Lucas probable prime, so it so I mean um so okay I mean uh I mean you know is either prime or it is a Lucas pseudoprime; further tests are required to determine whether or not 'n' is prime.
+If this congruence is true, then 'n' is a Lucas uh um well okay um like like like um probable prime, so it is either prime or it is you know okay I mean uh like you know so okay well a Lucas pseudoprime; further tests are required to determine whether or not 'n' is prime.

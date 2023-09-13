@@ -1,1 +1,1 @@
-Direct metal laser sintering (DMLS) is an additive metal fabrication (sintering) technology developed by you know EOS of Munich, Germany, often confused with the similar technical processes, selective laser sintering (SLS) or selective laser melting (SLM).
+Direct metal laser sintering (DMLS) is an additive metal fabrication like (sintering) technology developed by EOS of Munich, Germany, um often confused with the similar technical processes, selective laser sintering (SLS) or selective laser melting (SLM).

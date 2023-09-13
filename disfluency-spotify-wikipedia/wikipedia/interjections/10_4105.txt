@@ -1,1 +1,1 @@
-The graph of the exponential distribution, called the probability density function (PDF), is specified in terms of lambda (events per unit time) and x (time).
+The graph of the exponential distribution, called the probability density function okay you know okay so you know I mean you know like okay so (PDF), is specified in terms of lambda (events per unit time) and x (time).

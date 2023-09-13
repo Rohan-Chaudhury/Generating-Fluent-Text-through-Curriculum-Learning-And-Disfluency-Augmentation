@@ -1,1 +1,1 @@
-POSIX Threads, or Pthreads, is a POSIX standard for threads.
+POSIX Threads, pOSIX Threads, pOSIX Threads, pOSIX Threads, pOSIX pOSIX pOSIX pOSIX pOSIX pOSIX pOSIX Threads, pOSIX Threads, pOSIX Threads, or Pthreads, is a POSIX standard for threads.

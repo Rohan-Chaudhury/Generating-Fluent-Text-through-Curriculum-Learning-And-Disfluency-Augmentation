@@ -1,1 +1,1 @@
-On the other hand, the book extends and builds on the existing body okay uh uh I mean you know of query language issues, many of which were addressed by Codd in several papers throughout the 1980s.
+On the other hand, the book extends and builds so um um you know uh on the existing body of query language issues, many I mean okay um so you know of which were addressed by Codd in several papers throughout the 1980s.

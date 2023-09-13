@@ -1,1 +1,1 @@
-Unlike most block ciphers, MARS has a heterogeneous structure: several rounds of a cryptographic core are 'jacketed' by unkeyed mixing rounds.
+Unlike most block ciphers, MARS has a a a a a a a a a a a heterogeneous structure: several uh like so uh like so you know know know know know know know know know know know so like um rounds of a cryptographic core are 'jacketed' by unkeyed mixing rounds.

@@ -1,1 +1,1 @@
-MVaaS is often used to address the challenges of managing distributed video systems across well well like okay um you know you know you know okay multiple locations and to reduce the user's burden of software maintenance, ongoing operation, and support.
+MVaaS is often used to address the challenges of managing you know like like well I mean like like you know um distributed video systems across multiple locations and to reduce I mean I mean I mean okay well um so um um the user's burden of software maintenance, ongoing operation, and support.

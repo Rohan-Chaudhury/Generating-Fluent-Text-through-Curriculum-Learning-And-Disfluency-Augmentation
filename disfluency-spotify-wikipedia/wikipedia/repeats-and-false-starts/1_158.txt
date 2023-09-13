@@ -1,1 +1,1 @@
-According to according to its Terms of Service, Google Health is not considered a 'covered entity' entity' under the Health Insurance Portability and Accountability Act of 1996; thus, HIPAA privacy laws do not apply to it.
+According to its Terms of Service, Google Health is not not considered a 'covered entity' under the Health Insurance Portability Portability and Accountability Act of 1996; thus, HIPAA privacy laws do not apply to it.

@@ -1,1 +1,1 @@
-Unlike traditional virtual machines, a Docker container does not include a separate operating system, instead it relies on the operating system's functionality provided by the underlying infrastructure.
+Unlike traditional virtual machines, a Docker container does okay um okay I mean like not include a separate operating system, instead it I mean uh uh okay um relies on the operating system's functionality provided by the underlying infrastructure.

@@ -1,1 +1,1 @@
-The main oscillator consists of twelve discrete tone generators with octave divide - down so to provide full polyphony, while the built - in chorus effect utilizes bucket - brigade devices controlled by two LFOs more characteristic of synthesizers to create the characteristic vibrato.
+The main oscillator consists of twelve discrete tone generators with so octave divide - down to provide full polyphony, while the uh built - in chorus effect utilizes bucket - brigade well devices controlled by two LFOs more characteristic of synthesizers to create the characteristic vibrato.

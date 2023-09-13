@@ -1,1 +1,1 @@
-According to the C++ specification, it returns a reference to typeinfo, however, many compilers will uh like okay um like you know not let you assign thsi return value to a local variable, as the constructor for typeinfo is private.
+According to the C++ specification, it returns a reference I mean I mean well okay okay like to typeinfo, however, many compilers will not let you assign uh well so you know um uh thsi return value to a local variable, as the constructor for typeinfo is private.

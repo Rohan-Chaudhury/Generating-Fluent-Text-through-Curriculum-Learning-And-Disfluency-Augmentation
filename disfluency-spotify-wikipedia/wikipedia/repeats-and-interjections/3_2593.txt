@@ -1,1 +1,1 @@
-MPO is a new file format defined for this camera, and is basically two JPEG files joined together.
+MPO is a new file format defined for this okay so uh camera, and is basically two JPEG files joined together.

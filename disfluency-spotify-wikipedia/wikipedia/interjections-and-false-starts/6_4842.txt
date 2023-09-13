@@ -1,1 +1,1 @@
-Visual Studio Team Foundation Server (including Workgroup Edition) requires Microsoft SQL Server 2005 Standard Edition; however, a license for Standard Edition is included with both products.
+Visual Studio Team Foundation Server (including Workgroup Edition) requires well okay so so okay so Microsoft SQL Server 2005 Standard Edition; however, a well like okay I mean like I mean license for Standard Edition is included with both products.

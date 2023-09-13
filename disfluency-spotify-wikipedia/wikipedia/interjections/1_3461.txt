@@ -1,1 +1,1 @@
-Some effort has been expended in an attempt to factor these numbers, but um much remains unknown about their factorization; for instance, it's not known if all numbers in the sequence are squarefree, although all the known terms are.
+Some effort has been expended in an well attempt to factor these numbers, but much remains unknown I mean about their factorization; for instance, it's not known if all uh numbers in the sequence are squarefree, although all the known terms are.

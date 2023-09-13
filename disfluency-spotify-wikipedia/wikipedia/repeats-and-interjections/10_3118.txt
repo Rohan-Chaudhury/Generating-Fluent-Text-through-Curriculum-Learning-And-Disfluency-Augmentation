@@ -1,1 +1,1 @@
-Programs in the ROM modules could be called from a user program, using the um okay okay you know so um okay I mean you know well the the the the the the the the the the ubiquitous XEQ function, that appeared as 'XROM' when used to refer to a ROM program.
+Programs in the ROM modules could be called from so like okay um you know you know well uh you know I mean a a a a a a a a a a a okay uh uh you know um so well I mean uh you know user program, using the ubiquitous XEQ function, that appeared as 'XROM' when used to refer to a ROM program.

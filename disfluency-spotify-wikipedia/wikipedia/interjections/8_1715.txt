@@ -1,1 +1,1 @@
-However, it can be difficult to estimate 'K' i and 'K' i' accurately from um like okay well uh um like okay such plots, so it is advisable to estimate these constants using more reliable nonlinear regression methods, as described above.
+However, it can be difficult to estimate 'K' I mean well okay well you know um you know I mean i and 'K' i' accurately from such plots, you know okay well okay like so you know okay so it is advisable to estimate these constants using more reliable nonlinear regression methods, as described above.

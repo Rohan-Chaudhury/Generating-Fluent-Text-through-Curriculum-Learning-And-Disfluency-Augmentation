@@ -1,1 +1,1 @@
-Its worst its worst its worst its worst its worst its worst its worst its worst its worst - case time complexity is, but on average its performance is or well I mean okay uh well I mean so like even depending on the random distribution on automata chosen to model the algorithm's average - case behavior.
+Its worst - case time complexity is, but on average its you know well like um okay so well I mean performance is or even depending on the random distribution you know so well um so like like so on automata chosen to model the algorithm's average - case behavior.

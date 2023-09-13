@@ -1,1 +1,1 @@
-It replaces the standard programming library provided by the operating system for malloc and other um like so um well so software with its own versions which help the programmer detect buffer overflow and other critical programming issues.
+It replaces the standard programming library provided by the operating so okay so you know uh like system for malloc and other software with its own versions which well well you know you know okay so help the programmer detect buffer overflow and other critical programming issues.

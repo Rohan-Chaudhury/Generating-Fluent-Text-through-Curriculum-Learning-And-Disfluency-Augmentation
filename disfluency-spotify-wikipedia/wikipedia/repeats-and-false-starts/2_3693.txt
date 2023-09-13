@@ -1,1 +1,1 @@
-The Diseases Database is based around a collection of about 8, 500 concepts, called 'items', 'items', 'items', related to human medicine including diseases, drugs, symptoms, physical signs and abnormal laboratory results.
+The Diseases the Diseases the Diseases Database is based around a collection collection collection of about 8, 500 concepts, called 'items', related to to to human medicine including diseases, drugs, symptoms, physical signs and abnormal laboratory results.

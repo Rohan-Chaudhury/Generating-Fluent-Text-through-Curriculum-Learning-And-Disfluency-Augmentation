@@ -1,1 +1,1 @@
-The advantages of using a static balancer are speed and price, however a static balancer can only correct in one plane, so its accuracy is limited.
+The advantages the advantages of using a static balancer are speed speed and price, however a static balancer can only correct in one plane, so its accuracy is limited.

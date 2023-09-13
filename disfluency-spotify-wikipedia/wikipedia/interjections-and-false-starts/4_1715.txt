@@ -1,1 +1,1 @@
-However, it however, it however, it however, it however, it can be difficult to estimate 'K' i and 'K' i' accurately from okay you know like well such plots, so it is advisable to estimate these constants using more reliable nonlinear regression methods, as described above.
+However, it can be difficult to estimate 'K' i and I mean okay well I mean 'K' i' accurately from such plots, so it is um you know um well advisable to estimate these constants using more reliable nonlinear regression methods, as described above.

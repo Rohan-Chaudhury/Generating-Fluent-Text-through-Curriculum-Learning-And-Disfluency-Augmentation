@@ -1,1 +1,1 @@
-Available since April 2009 on SourceForge for download, OpenSearchServer was developed under the GPL v3 license I mean okay and offers a series of full text lexical analyzers and can be installed on different platforms (Windows, Linux, Macintosh).
+Available since available since available since April 2009 on SourceForge for download, OpenSearchServer was okay okay developed under the GPL v3 license and offers so uh a series of full text lexical analyzers and so like can be installed on different platforms (Windows, Linux, Macintosh).

@@ -1,1 +1,1 @@
-They are often used by open source projects and other multi-developer projects to handle various versions and developers submitting various patches of code in an organized fashion.
+They are often used by open source projects and other multi-developer I mean well uh like like I mean projects to handle various versions and developers submitting various patches of code in an organized fashion.

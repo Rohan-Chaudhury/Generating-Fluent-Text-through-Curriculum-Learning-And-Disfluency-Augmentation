@@ -1,1 +1,1 @@
-A POJI aPOJI aPOJI aPOJI aPOJI aPOJI aPOJI corresponds to a Java standard interface and is usually used to interfaces that are used in the JEE context to provide services.
+A POJI corresponds to a Java standard interface and and and and and and and is usually used to interfaces that are used in the JEE context to provide services.

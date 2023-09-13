@@ -1,1 +1,1 @@
-Almost all the natural electrical sources are constant voltage sources (primary and secondary batteries); however, so you know well okay uh um there are no convenient, constant current sources in nature (excepting inductors, Van der Graaf generators and photodiodes).
+Almost all the natural electrical sources are constant voltage sources (primary I mean okay well well like um and secondary batteries); however, there are no convenient, constant like I mean uh uh you know you know current sources in nature (excepting inductors, Van der Graaf generators and photodiodes).

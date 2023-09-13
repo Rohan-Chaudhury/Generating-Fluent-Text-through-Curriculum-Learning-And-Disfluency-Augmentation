@@ -1,1 +1,1 @@
-Like most wavelength controlled telecommunication lasers, the laser chip is mounted on a thermoelectric cooler okay to stabilize the temperature, and by making small adjustments to the inside temperature of the package, fine tuning of the wavelength can be realized.
+Like most wavelength controlled telecommunication lasers, the laser um chip is mounted on a thermoelectric cooler to stabilize the temperature, I mean and by making small adjustments to the inside okay temperature of the package, fine tuning of the wavelength can be realized.

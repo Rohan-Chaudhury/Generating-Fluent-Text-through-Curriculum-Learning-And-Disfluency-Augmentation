@@ -1,1 +1,1 @@
-Allocating frequently used variables to registers can be critical to a program's performance; this well okay like I mean uh well register allocation is performed either by a compiler in the code generation phase, or manually by an assembly language programmer.
+Allocating frequently used variables to registers can be I mean well okay you know you know okay critical to a program's performance; this register allocation is performed well you know I mean well so um either by a compiler in the code generation phase, or manually by an assembly language programmer.

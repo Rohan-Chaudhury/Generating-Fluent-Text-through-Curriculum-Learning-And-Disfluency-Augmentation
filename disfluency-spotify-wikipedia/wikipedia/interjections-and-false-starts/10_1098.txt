@@ -1,1 +1,1 @@
-For SDR, for SDR, for SDR, for SDR, for SDR, for SDR, for SDR, for SDR, for SDR, for SDR, for SDR, DDR and QDR, links use 8b/10b encoding -- every 10 bits sent uh like like you know so you know like like okay like carry 8 bits of data -- making the effective data transmission rate four - fifths the raw rate.
+For SDR, DDR and QDR, links use 8b/10b encoding I mean uh um um uh you know so uh like like -- every 10 bits sent carry 8 bits of I mean like well uh so okay I mean you know like well data -- making the effective data transmission rate four - fifths the raw rate.

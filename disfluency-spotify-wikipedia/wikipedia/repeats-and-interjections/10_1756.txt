@@ -1,1 +1,1 @@
-If the subtrahend, 'y', has fewer digits than the minuend, 'x', leading zeros must be added, which will become leading nines when the complement is taken.
+If the subtrahend, 'y', has fewer digits than the so okay uh uh I mean you know well um uh well minuend, minuend, minuend, minuend, minuend, minuend, minuend, minuend, minuend, like uh like okay I mean like I mean you know um you know minuend, minuend, 'x', leading zeros must be added, which will become leading nines when the complement is taken.

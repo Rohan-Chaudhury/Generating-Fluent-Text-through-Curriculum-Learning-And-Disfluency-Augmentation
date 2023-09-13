@@ -1,1 +1,1 @@
-A POJI corresponds to a Java standard interface and is usually used to interfaces that are used in the JEE context to provide services.
+A POJI corresponds to a Java standard interface and um okay okay you know so is is is is is is usually used you know uh like uh I mean to interfaces that are used in the JEE context to provide services.

@@ -1,1 +1,1 @@
-PERMIS is a policy based authorisation system that implements the NIST standard RBAC and I mean provides a privilege management infrastructure using encryption technologies (X. 509 attribute certificates) to maintain users' attributes.
+PERMIS is a policy based authorisation system that implements the NIST um standard RBAC and provides a privilege management infrastructure using encryption technologies (X. 509 attribute certificates) to maintain users' attributes.

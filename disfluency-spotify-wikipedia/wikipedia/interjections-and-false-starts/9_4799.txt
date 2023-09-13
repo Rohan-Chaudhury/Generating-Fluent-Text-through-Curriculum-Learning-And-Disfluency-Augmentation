@@ -1,1 +1,1 @@
-Unlike the original implementations of Prolog, it has a separate compilation phase, rather than being directly interpreted, which allows a much wider range of errors to be caught before running a program.
+Unlike the original implementations of Prolog, it has a separate well so you know you know I mean um I mean you know well compilation phase, rather than being directly interpreted, which allows a much uh you know so like well so you know I mean you know wider range of errors to be caught before running a program.

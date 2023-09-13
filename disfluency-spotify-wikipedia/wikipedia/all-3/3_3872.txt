@@ -1,1 +1,1 @@
-The Urchin Software Configuration Management system is an free and open source initiative you you you you know I mean um to provide an enterprise scale solution to managing the configuration of many software applications running on many servers across an enterprise.
+The Urchin Software Configuration Management system is an an an an free and so uh I mean open source source source source initiative to provide an enterprise scale you know I mean mean mean mean okay solution to managing the configuration of many software applications running on many servers across an enterprise.

@@ -1,1 +1,1 @@
-Bash is a Unix shell written by Brian Fox for the GNU Project.
+Bash is bash is bash is bash is a Unix shell written by Brian Fox for the GNU Project.
