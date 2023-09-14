@@ -27,9 +27,9 @@ from sklearn.metrics import precision_score, recall_score, f1_score
 
 
 os.environ["WANDB_DISABLED"] = "true"
-os.environ["CUDA_VISIBLE_DEVICES"] = "3,2,1,0" 
+os.environ["CUDA_VISIBLE_DEVICES"] = "3" # "3,2,1,0" 
 
-NUM_GPU = 4
+NUM_GPU = 1  # 4
 BATCH_SIZE = 4
 SEQUENCE_LENGTH = 512
 
@@ -84,7 +84,7 @@ train_inputs, val_inputs, train_outputs, val_outputs = train_test_split(input_te
 
 # Add prompt to the input_texts and end token to the output tests
 def add_to_input_texts(input_texts):
-    input_texts = ["Remove text disfluency: " + text.strip() + " [END]" for text in input_texts]
+    input_texts = ["Remove text disfluency: " + text.split(".txt:")[1].strip() + " [END]" for text in input_texts]
     return input_texts
 
 def add_to_output_texts(input_texts):
