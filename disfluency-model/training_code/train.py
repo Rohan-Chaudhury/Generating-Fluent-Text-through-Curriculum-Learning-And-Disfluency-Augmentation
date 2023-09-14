@@ -33,10 +33,10 @@ NUM_GPU = 4
 BATCH_SIZE = 4
 SEQUENCE_LENGTH = 512
 
-model_name = "t5-base" # "/home/grads/r/rohan.chaudhury/Disfluency/models/checkpoint-2253"
+model_name = "t5-base" 
 output_model_path = "." 
-input_texts_path =  ""
-output_texts_path =  ""
+input_texts_path =  "/home/grads/m/mariateleki/Generating-Fluent-Text-through-Curriculum-Learning-And-Disfluency-Augmentation/disfluency-spotify-wikipedia/spotify-model-files/repeats/0.txt"
+output_texts_path =  "/home/grads/m/mariateleki/Generating-Fluent-Text-through-Curriculum-Learning-And-Disfluency-Augmentation/disfluency-spotify-wikipedia/spotify-model-files/repeats/0.txt"
 
 # Print important script usage information
 print("model name:", model_name)
