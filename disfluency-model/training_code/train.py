@@ -69,16 +69,7 @@ for i in range(len(all_texts)):
     length_words.append(len(all_texts[i].split()))
 print("Max length of all the transcripts (in words):", max(length_words))
 
-# Model initialization
-tokenizer = T5Tokenizer.from_pretrained(model_name, model_max_length=SEQUENCE_LENGTH)
-
-config = T5Config.from_pretrained(model_name)
-config.model_max_length = SEQUENCE_LENGTH
-
-model = T5ForConditionalGeneration.from_pretrained(model_name, config=config)
-
-train_inputs, val_inputs, train_outputs, val_outputs = train_test_split(input_texts, output_texts, shuffle=True,  test_size=0.3, random_state=42)
-
+# Add prompt to the input_texts and end token to the output tests
 def add_to_input_texts(input_texts):
     input_texts = ["Remove text disfluency: " + text.strip() + " [END]" for text in input_texts]
     return input_texts
@@ -93,10 +84,24 @@ val_inputs = add_to_input_texts(val_inputs)
 train_outputs = add_to_output_texts(train_outputs)
 val_outputs = add_to_output_texts(val_outputs)
 
-print(train_inputs[0])
-print(train_outputs[0])
-print(val_inputs[0])
-print(val_outputs[0])
+print("---------- DATA PREVIEW ----------")
+print("train_inputs[0]:", train_inputs[0])
+print("train_outputs[0]:", train_outputs[0])
+print("val_inputs[0]:", val_inputs[0])
+print("val_outputs[0]:", val_outputs[0])
+
+# Model initialization
+tokenizer = T5Tokenizer.from_pretrained(model_name, model_max_length=SEQUENCE_LENGTH)
+
+config = T5Config.from_pretrained(model_name)
+config.model_max_length = SEQUENCE_LENGTH
+
+model = T5ForConditionalGeneration.from_pretrained(model_name, config=config)
+
+# Train-validation-test split
+train_inputs, val_inputs, train_outputs, val_outputs = train_test_split(input_texts, output_texts, shuffle=True,  test_size=0.3, random_state=42)
+
+
 
 class TranslationDataset(Dataset):
     def __init__(self, tokenizer, inputs, outputs, max_length=SEQUENCE_LENGTH):
