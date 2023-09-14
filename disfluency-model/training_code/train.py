@@ -36,22 +36,24 @@ BATCH_SIZE = 4
 SEQUENCE_LENGTH = 512
 
 model_name = "t5-base" # "/home/grads/r/rohan.chaudhury/Disfluency/models/checkpoint-2253"
-print ("Model name:", model_name)
 output_model_path = "." # "./results/t5baseNewwords/final_Sw_whole_50"
 input_texts_path = "/home/grads/r/rohan.chaudhury/Disfluency/formatted_text/final_sw_whole/train/disfluent.txt"
 output_texts_path = "/home/grads/r/rohan.chaudhury/Disfluency/formatted_text/final_sw_whole/train/fluent.txt"
 
-# Data preparation
+print ("Model name:", model_name)
+
+# Read in the files
 input_texts = open(input_texts_path).read().split('\n')
 output_texts = open(output_texts_path).read().split('\n')
 
+# Get basic statistics about the files
+print("---------- FILE STATISTICS ----------")
 all_texts = input_texts + output_texts
 all_words = []
 for i in all_texts:
     all_words.extend(i.split())
 all_words = list(set(all_words))
-print(len(all_words))
-
+print("Number of unique words across all the transcripts:", len(all_words))
 
 lengths = []
 print(len(all_texts))
@@ -60,12 +62,12 @@ print(len(output_texts))
 
 for i in range(len(all_texts)):
     lengths.append(len(all_texts[i]))
-print ("Max length: ", max(lengths))
+print ("Max length of all the transcripts (in chars):", max(lengths))
 
 length_words=[]
 for i in range(len(all_texts)):
     length_words.append(len(all_texts[i].split()))
-print("Max length in words: ", max(length_words))
+print("Max length of all the transcripts (in words):", max(length_words))
 
 # Model initialization
 tokenizer = T5Tokenizer.from_pretrained(model_name, model_max_length=SEQUENCE_LENGTH)
