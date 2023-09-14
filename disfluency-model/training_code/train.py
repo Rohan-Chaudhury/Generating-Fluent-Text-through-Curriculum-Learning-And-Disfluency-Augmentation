@@ -25,8 +25,6 @@ import evaluate
 from nltk.tokenize import word_tokenize
 from sklearn.metrics import precision_score, recall_score, f1_score
 
-print ("Input texts path: ", input_texts_path)
-print ("Output texts path: ", output_texts_path)
 
 os.environ["WANDB_DISABLED"] = "true"
 os.environ["CUDA_VISIBLE_DEVICES"] = "3,2,1,0" 
@@ -36,11 +34,15 @@ BATCH_SIZE = 4
 SEQUENCE_LENGTH = 512
 
 model_name = "t5-base" # "/home/grads/r/rohan.chaudhury/Disfluency/models/checkpoint-2253"
-output_model_path = "." # "./results/t5baseNewwords/final_Sw_whole_50"
-input_texts_path = "/home/grads/r/rohan.chaudhury/Disfluency/formatted_text/final_sw_whole/train/disfluent.txt"
-output_texts_path = "/home/grads/r/rohan.chaudhury/Disfluency/formatted_text/final_sw_whole/train/fluent.txt"
+output_model_path = "." 
+input_texts_path =  ""
+output_texts_path =  ""
 
-print ("Model name:", model_name)
+# Print important script usage information
+print("model name:", model_name)
+print("output_model_path:", output_model_path)
+print("input_texts_path", input_texts_path)
+print("output_texts_path", output_texts_path)
 
 # Read in the files
 input_texts = open(input_texts_path).read().split('\n')
@@ -69,6 +71,17 @@ for i in range(len(all_texts)):
     length_words.append(len(all_texts[i].split()))
 print("Max length of all the transcripts (in words):", max(length_words))
 
+# Tokenizer and model initialization
+tokenizer = T5Tokenizer.from_pretrained(model_name, model_max_length=SEQUENCE_LENGTH)
+
+config = T5Config.from_pretrained(model_name)
+config.model_max_length = SEQUENCE_LENGTH
+
+model = T5ForConditionalGeneration.from_pretrained(model_name, config=config)
+
+# Train-validation-test split
+train_inputs, val_inputs, train_outputs, val_outputs = train_test_split(input_texts, output_texts, shuffle=True,  test_size=0.3, random_state=42)
+
 # Add prompt to the input_texts and end token to the output tests
 def add_to_input_texts(input_texts):
     input_texts = ["Remove text disfluency: " + text.strip() + " [END]" for text in input_texts]
@@ -89,18 +102,6 @@ print("train_inputs[0]:", train_inputs[0])
 print("train_outputs[0]:", train_outputs[0])
 print("val_inputs[0]:", val_inputs[0])
 print("val_outputs[0]:", val_outputs[0])
-
-# Model initialization
-tokenizer = T5Tokenizer.from_pretrained(model_name, model_max_length=SEQUENCE_LENGTH)
-
-config = T5Config.from_pretrained(model_name)
-config.model_max_length = SEQUENCE_LENGTH
-
-model = T5ForConditionalGeneration.from_pretrained(model_name, config=config)
-
-# Train-validation-test split
-train_inputs, val_inputs, train_outputs, val_outputs = train_test_split(input_texts, output_texts, shuffle=True,  test_size=0.3, random_state=42)
-
 
 
 class TranslationDataset(Dataset):
@@ -171,6 +172,7 @@ class CustomDataCollator(DataCollatorForSeq2Seq):
         return {"input_ids": input_ids["input_ids"], "labels": labels}
 
 data_collator = CustomDataCollator(tokenizer)
+
 
 early_stopping_callback = EarlyStoppingCallback(
     early_stopping_patience = 40,  
