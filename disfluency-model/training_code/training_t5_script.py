@@ -27,14 +27,14 @@ from sklearn.metrics import precision_score, recall_score, f1_score
 
 
 os.environ["WANDB_DISABLED"] = "true"
-os.environ["CUDA_VISIBLE_DEVICES"] = "3,2,1,0"  # "3,2,1,0" 
+os.environ["CUDA_VISIBLE_DEVICES"] = "1,0"  # "3,2,1,0" 
 
-NUM_GPU = 4  # 4
-BATCH_SIZE = 4
+NUM_GPU = 2  # 4
+BATCH_SIZE = 2  # decreased batch size from 4 to 2 on stormtrooper06 due to memory limitations
 SEQUENCE_LENGTH = 512
 
 model_name = "t5-base" 
-output_model_path = "." 
+output_model_path = "./" 
 input_texts_path =  "/home/grads/m/mariateleki/Generating-Fluent-Text-through-Curriculum-Learning-And-Disfluency-Augmentation/disfluency-spotify-wikipedia/spotify-model-files/repeats/0.txt"
 output_texts_path =  "/home/grads/m/mariateleki/Generating-Fluent-Text-through-Curriculum-Learning-And-Disfluency-Augmentation/disfluency-spotify-wikipedia/spotify-model-files/repeats/0.txt"
 
