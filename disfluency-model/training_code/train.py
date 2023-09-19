@@ -199,7 +199,7 @@ training_args = Seq2SeqTrainingArguments(
 )
 
 optimizer = AdamW(model.parameters(), lr=training_args.learning_rate, weight_decay=training_args.weight_decay)
-optimizer = optim.Lookahead(optimizer)
+# optimizer = optim.Lookahead(optimizer)
 
 num_training_steps = len(train_dataset) * training_args.num_train_epochs // training_args.per_device_train_batch_size
 num_warmup_steps = int(num_training_steps * 0.1)  

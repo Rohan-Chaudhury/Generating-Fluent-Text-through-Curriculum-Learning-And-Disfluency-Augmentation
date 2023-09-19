@@ -218,10 +218,10 @@ def calculate_metrics(predicted_sentences, ground_truth_sentences, noisy_sentenc
             idx_noisy += 1
 
 
-            gold_number += ground_truth_mask.count(1)
-            predict_number += predicted_mask.count(1)
-            sum_result = list(map(lambda x: x[0] + x[1], zip(ground_truth_mask, predicted_mask)))
-            correct_number += sum_result.count(2)
+        gold_number += ground_truth_mask.count(1)
+        predict_number += predicted_mask.count(1)
+        sum_result = list(map(lambda x: x[0] + x[1], zip(ground_truth_mask, predicted_mask)))
+        correct_number += sum_result.count(2)
 
     try:
         p_score = correct_number * 1.0 / predict_number
