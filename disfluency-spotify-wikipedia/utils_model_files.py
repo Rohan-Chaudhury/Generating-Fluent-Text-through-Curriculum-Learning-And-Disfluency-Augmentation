@@ -2,7 +2,7 @@ import os
 import utils_general
 
 
-def get_model_files(dataset_name="spotify", trfs=["repeats", "interjections", "false-starts", "all-3"], includeNegativeOne=False):
+def get_model_files(dataset_name="spotify", trfs=["repeats", "interjections", "false-starts", "all-3"], includeNegativeOne=False, withFilename=False):
     
     # create output dir
     output_dir = os.path.join(utils_general.PATH_TO_PROJECT, dataset_name+"-model-files")
@@ -26,7 +26,11 @@ def get_model_files(dataset_name="spotify", trfs=["repeats", "interjections", "f
             text = utils_general.read_file(os.path.join(utils_general.PATH_TO_PROJECT, dataset_name, "-1", f))
             
             with open(os.path.join(output_dir, "-1", "-1.txt"), mode="a") as open_file:
-                open_file.write(f + ": " + text + "\n")
+                
+                if withFilename:
+                    open_file.write(f + ": " + text + "\n")
+                else:
+                    open_file.write(text + "\n")
         
     
     # for the 1-10 dirs
@@ -43,7 +47,12 @@ def get_model_files(dataset_name="spotify", trfs=["repeats", "interjections", "f
             text = utils_general.read_file(os.path.join(zero_dir, f))
             
             with open(os.path.join(output_dir, t, "0.txt"), mode="a") as open_file:
-                open_file.write(f + ": " + text + "\n")
+                
+                if withFilename:
+                    open_file.write(f + ": " + text + "\n")
+                else:
+                    open_file.write(text + "\n")
+                
 
             # get all of the rest of the k-versions of this file
             for k in range(1,10+1):
@@ -54,4 +63,8 @@ def get_model_files(dataset_name="spotify", trfs=["repeats", "interjections", "f
 
                 # write it out to the csv
                 with open(os.path.join(output_dir, t, str(k) + ".txt"), mode="a") as open_file:
-                    open_file.write(f + ": " + text + "\n")
+                    
+                    if withFilename:
+                        open_file.write(f + ": " + text + "\n")
+                    else:
+                        open_file.write(text + "\n")
